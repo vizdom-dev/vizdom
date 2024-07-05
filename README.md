@@ -75,16 +75,16 @@ const positioned = graph.layout();
 await fs.writeFile("./graph.svg", positioned.to_svg().to_string());
 ```
 
-Check out the [basic example](examples/basic/index.mjs), which produces a
-graph that looks like [this](examples/basic/graph.svg).
+Check out the [basic example](examples/basic/index.mjs), which produces a graph
+that looks like [this](examples/basic/graph.svg).
 
 ## Styling Attributes
 
 Vizdom supports several layout and rendering options for those who want more
 control over the appearance of their graphs.
 
-Check out the [style example](examples/styles/index.mjs), which produces a
-graph that looks like [this](examples/styles/graph.svg).
+Check out the [style example](examples/styles/index.mjs), which produces a graph
+that looks like [this](examples/styles/graph.svg).
 
 ## 📈 Diff Viewer 📉
 
@@ -97,14 +97,14 @@ annotated with a 'glow' effect to highlight differences:
 - 🟧 Modified elements (`id` is the same, but other attributes have changed) are
   highlighted in **orange**.
 
-Check out the [diff example](examples/diff/index.mjs), which produces two
-graphs that look like [graph 0](examples/diff/graph0.svg) and [graph
-1](examples/diff/graph0.svg).
+Check out the [diff example](examples/diff/index.mjs), which produces two graphs
+that look like [graph 0](examples/diff/graph0.svg) and [graph
+1](examples/diff/graph1.svg).
 
 ## License
 
-Licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE)
-file or visit
+Licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file
+or visit
 [https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Closed-Source Notice
