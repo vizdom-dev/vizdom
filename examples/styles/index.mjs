@@ -1,5 +1,5 @@
+import { ArrowHead, Dir, DirectedGraph, EdgeStyle, LabelPos, RankDir, Shape, VertexStyle } from "@vizdom/vizdom-ts-node";
 import fs from "node:fs/promises";
-import { ArrowHead, Dir, DirectedGraph, EdgeStyle, LabelPos, RankDir, Shape, VertexStyle } from "../../dist/node/vizdom_ts.js";
 
 const graph = new DirectedGraph({
   layout: {
