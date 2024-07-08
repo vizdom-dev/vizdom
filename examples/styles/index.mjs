@@ -1,15 +1,24 @@
-import { ArrowHead, Dir, DirectedGraph, EdgeStyle, LabelPos, RankDir, Shape, VertexStyle } from "@vizdom/vizdom-ts-node";
 import fs from "node:fs/promises";
+import {
+  ArrowHead,
+  Dir,
+  DirectedGraph,
+  EdgeStyle,
+  LabelPos,
+  RankDir,
+  Shape,
+  VertexStyle,
+} from "@vizdom/vizdom-ts-node";
 
 const graph = new DirectedGraph({
   layout: {
     // Change the direction of the ranked graph
     edge_sep: 75,
-    rank_dir: RankDir.TB
+    rank_dir: RankDir.TB,
   },
   render: {
-    bg_color: "whitesmoke"
-  }
+    bg_color: "whitesmoke",
+  },
 });
 const v0 = graph.new_vertex({
   render: {
@@ -17,7 +26,7 @@ const v0 = graph.new_vertex({
     color: "#ff2f8e",
     fill_color: "#ff2f8eaa",
     shape: Shape.Triangle,
-    style: VertexStyle.Dashed
+    style: VertexStyle.Dashed,
   },
 });
 const v1 = graph.new_vertex({
@@ -52,7 +61,7 @@ const v3 = graph.new_vertex({
 
 graph.new_edge(v0, v1, {
   layout: {
-    label_pos: LabelPos.R
+    label_pos: LabelPos.R,
   },
   render: {
     label: "An underlined edge",
@@ -64,7 +73,7 @@ graph.new_edge(v0, v1, {
 });
 graph.new_edge(v1, v2, {
   layout: {
-    label_pos: LabelPos.R
+    label_pos: LabelPos.R,
   },
   render: {
     label: "A backwards arrow",
@@ -74,7 +83,7 @@ graph.new_edge(v1, v2, {
 });
 graph.new_edge(v0, v2, {
   layout: {
-    label_pos: LabelPos.C
+    label_pos: LabelPos.C,
   },
   render: {
     label: "A boxed, centered,\nfilled, edge",
@@ -87,7 +96,7 @@ graph.new_edge(v0, v2, {
 });
 graph.new_edge(v0, v3, {
   layout: {
-    label_pos: LabelPos.R
+    label_pos: LabelPos.R,
   },
   render: {
     label: "A cycle!",
@@ -99,7 +108,7 @@ graph.new_edge(v0, v3, {
 
 graph.new_edge(v3, v0, {
   layout: {
-    label_pos: LabelPos.L
+    label_pos: LabelPos.L,
   },
   render: {
     label: "No arrowheads",
@@ -112,5 +121,5 @@ graph.new_edge(v3, v0, {
 
 const positionted = graph.layout();
 const svg = positionted.to_svg();
- 
+
 await fs.writeFile("./graph.svg", svg.to_string());

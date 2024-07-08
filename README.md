@@ -78,10 +78,105 @@ await fs.writeFile("./graph.svg", positioned.to_svg().to_string());
 Check out the [basic example](examples/basic/index.mjs), which produces a graph
 that looks like [this](examples/basic/graph.svg).
 
+## Layout Engine
+
+Vizdom can be used as a pure layout engine to obtain positioning information,
+which is especially useful if you already have a method for rendering your
+graph.
+
+### Specifying Layout Parameters
+
+To use Vizdom for layout purposes, you need to provide the bounding box
+dimensions. If you are using the library in a browser context, you can retrieve
+these dimensions by using methods like
+[getBoundingClientRect()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+on the HTML element. Compute the `shape_w` (width) and `shape_h` (height) and
+pass them as `layout` parameters.
+
+Additionally, there's an optional argument, `compute_bounding_box`, which can be
+set to `false`. This tells the library to use the provided layout values for the
+bounding box instead of computing it from the `label` attribute. By default, the
+shape is considered to be a `Shape.Rectangle` for nodes and `Shape.Plaintext`
+for edges (which is also a rectangle) and should remain unchanged in this
+context.
+
+### Providing IDs
+
+Each vertex and edge requires an `id` to map the JSON result correctly. The
+resulting JSON string will include these IDs, enabling accurate mapping of the
+nodes and edges.
+
+```typescript
+// ...
+const v0 = graph.new_vertex(
+  {
+    layout: {
+      shape_w: 10,
+      shape_h: 10,
+    },
+    render: {
+      id: "v0",
+    },
+  },
+  {
+    compute_bounding_box: false,
+  }
+);
+
+// ...
+
+// Similarly, for an edge you have the same API.
+const e0 = graph.new_edge(
+  v0,
+  v1,
+  {
+    layout: {
+      shape_w: 10,
+      shape_h: 10,
+    },
+    render: {
+      id: "e1",
+    },
+  },
+  {
+    compute_bounding_box: false,
+  }
+);
+
+// Position the graph
+const positioned = graph.layout();
+
+// Obtain the json instance
+const json = positioned.to_json();
+
+// Get a JS/TS Object adhereing to the `IJsonPosition` interface.
+const jsonObj = json.to_obj();
+
+// Or get the JSON string directly
+const jsonString: string = json.to_string();
+// const jsonStringPretty: string = json.to_string_pretty();
+```
+
+For a practical example, check out the [json example](examples/json/index.mjs),
+which generates a positional JSON string similar to
+[this](examples/json/graph.json).
+
 ## Styling Attributes
 
 Vizdom supports several layout and rendering options for those who want more
 control over the appearance of their graphs.
+
+```typescript
+const v0 = graph.new_vertex({
+  render: {
+    label: "Foo",
+    color: "#ff2f8e",
+    fill_color: "#ff2f8eaa",
+    shape: Shape.Triangle,
+    style: VertexStyle.Dashed,
+  },
+});
+```
 
 Check out the [style example](examples/styles/index.mjs), which produces a graph
 that looks like [this](examples/styles/graph.svg).
