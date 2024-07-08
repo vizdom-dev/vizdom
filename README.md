@@ -76,7 +76,9 @@ await fs.writeFile("./graph.svg", positioned.to_svg().to_string());
 ```
 
 Check out the [basic example](examples/basic/index.mjs), which produces a graph
-that looks like ![this](examples/basic/graph.svg)
+that looks like:
+
+![this](examples/basic/graph.svg)
 
 ## Layout Engine
 
@@ -179,7 +181,9 @@ const v0 = graph.new_vertex({
 ```
 
 Check out the [style example](examples/styles/index.mjs), which produces a graph
-that looks like ![this](examples/styles/graph.svg).
+that looks like:
+
+![this](examples/styles/graph.svg)
 
 ## 📈 Diff Viewer 📉
 
