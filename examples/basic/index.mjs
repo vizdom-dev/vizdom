@@ -27,4 +27,4 @@ graph.new_edge(v0, v1, {
 const positioned = graph.layout();
 
 // Finally, obtain to an SVG
-await fs.writeFile("./graph.svg", positioned.to_svg().to_string()); 
+await fs.writeFile("./graph.svg", positioned.to_svg().to_string());

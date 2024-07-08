@@ -1,0 +1,70 @@
+{
+  "graph": {
+    "id": "",
+    "label": "",
+    "rank_dir": 0,
+    "width": 10.0,
+    "height": 30.0
+  },
+  "nodes": [
+    {
+      "id": "v0",
+      "label": "",
+      "shape": 0,
+      "pen_width": 1.0,
+      "font_size": 16.0,
+      "node_type": 0,
+      "elem_status": 0,
+      "rank": 0,
+      "order": 0,
+      "x": 5.0,
+      "y": 5.0,
+      "width": 10.0,
+      "height": 10.0
+    },
+    {
+      "id": "v1",
+      "label": "",
+      "shape": 0,
+      "pen_width": 1.0,
+      "font_size": 16.0,
+      "node_type": 0,
+      "elem_status": 0,
+      "rank": 2,
+      "order": 0,
+      "x": 5.0,
+      "y": 25.0,
+      "width": 10.0,
+      "height": 10.0
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "label": "",
+      "shape": 6,
+      "pen_width": 1.0,
+      "font_size": 16.0,
+      "self_edge": false,
+      "elem_status": 0,
+      "x": 5.0,
+      "y": 15.0,
+      "width": 0.0,
+      "height": 0.0,
+      "points": [
+        {
+          "x": 5.0,
+          "y": 10.0
+        },
+        {
+          "x": 5.0,
+          "y": 15.0
+        },
+        {
+          "x": 5.0,
+          "y": 20.0
+        }
+      ]
+    }
+  ]
+}
