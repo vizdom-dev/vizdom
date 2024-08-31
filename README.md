@@ -80,6 +80,33 @@ that looks like:
 
 ![this](examples/basic/graph.svg)
 
+### ☁️ Online Mode
+
+Vizdom offers an online mode that effortlessly syncs your graph with your Vizdom
+account, eliminating the need for manual positioning and rendering. This ensures
+your graph is always up-to-date with your latest code changes.
+
+To get started with syncing, [sign up for an
+account](https://vizdom.dev/auth/signup).
+
+Once you have an account, syncing your graph is straightforward. Simply add a
+few additional parameters when constructing your graph:
+
+```typescript
+const graph = new DirectedGraph(
+  {}, // <-- Optional layout and render attributes.
+  // Must be specified as the second argument.
+  {
+    client_id: process.env.VIZDOM_CLIENT_ID || "",
+    client_secret: process.env.VIZDOM_CLIENT_SECRET || "",
+    graph_id: process.env.VIZDOM_GRAPH_ID || "",
+  }
+);
+```
+
+By specifying these parameters when creating your graph, you can easily manage
+multiple graphs within the same project, each syncing independently.
+
 ## Layout Engine
 
 Vizdom can be used as a pure layout engine to obtain positioning information,

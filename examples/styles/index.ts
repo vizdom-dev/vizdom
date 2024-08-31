@@ -8,7 +8,8 @@ import {
   RankDir,
   Shape,
   VertexStyle,
-} from "@vizdom/vizdom-ts-node";
+} from "../../dist/node/vizdom_ts.js";
+// replace with `from "@vizdom/vizdom-ts-node"`
 
 const graph = new DirectedGraph({
   layout: {

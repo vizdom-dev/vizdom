@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import util from "node:util";
-import { DirectedGraph } from "@vizdom/vizdom-ts-node";
+import { DirectedGraph } from "../../dist/node/vizdom_ts.js";
+// replace with `from "@vizdom/vizdom-ts-node"`
 
 // Create a new graph. We're overriding several default spacing attributes just
 // for easy comparison of the JSON output. In most cases, overriding the margin
@@ -76,9 +77,11 @@ const json = positioned.to_json();
 
 // Obtain a JS/TS object directly for manipulation
 const jsonObj = json.to_obj();
-console.log(util.inspect(jsonObj, {showHidden: false, depth: null, colors: true}))
+console.log(
+  util.inspect(jsonObj, { showHidden: false, depth: null, colors: true })
+);
 
-// ...Or obtain to a json string
+// ...Or obtain a json string
 //
 // NOTE: You can make it compact json string using `json.to_string()`
 await fs.writeFile("./graph.json", json.to_string_pretty());

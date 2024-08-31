@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
-import { DirectedGraph, Util } from "@vizdom/vizdom-ts-node";
+import { DirectedGraph, Util } from "../../dist/node/vizdom_ts.js";
+// replace with `from "@vizdom/vizdom-ts-node"`
 
 // First graph
 const g0 = new DirectedGraph();
