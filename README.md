@@ -75,7 +75,7 @@ const positioned = graph.layout();
 await fs.writeFile("./graph.svg", positioned.to_svg().to_string());
 ```
 
-Check out the [basic example](examples/basic/index.mjs), which produces a graph
+Check out the [basic example](examples/basic/index.ts), which produces a graph
 that looks like:
 
 ![this](examples/basic/graph.svg)
@@ -186,7 +186,7 @@ const jsonString: string = json.to_string();
 // const jsonStringPretty: string = json.to_string_pretty();
 ```
 
-For a practical example, check out the [json example](examples/json/index.mjs),
+For a practical example, check out the [json example](examples/json/index.ts),
 which generates a positional JSON string similar to
 [this](examples/json/graph.json).
 
@@ -207,7 +207,7 @@ const v0 = graph.new_vertex({
 });
 ```
 
-Check out the [style example](examples/styles/index.mjs), which produces a graph
+Check out the [style example](examples/styles/index.ts), which produces a graph
 that looks like:
 
 ![this](examples/styles/graph.svg)
@@ -223,7 +223,7 @@ annotated with a 'glow' effect to highlight differences:
 - 🟧 Modified elements (`id` is the same, but other attributes have changed) are
   highlighted in **orange**.
 
-Check out the [diff example](examples/diff/index.mjs), which produces two graphs
+Check out the [diff example](examples/diff/index.ts), which produces two graphs
 that look like:
 
 ![graph 0](examples/diff/graph0.svg)
@@ -237,6 +237,23 @@ and
 Licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file
 or visit
 [https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+## Third Party Licenses
+
+This project makes use of third-party components, each with its own licensing
+terms:
+
+- **Dagre.js**: Some of the layout algorithms in this project are inspired by
+  [Dagre.js](https://github.com/dagrejs/dagre), which is licensed under the MIT
+  License. The full license text can be found in the
+  [`third_party/dagre/LICENSE`](third_party/dagre/LICENSE) file.
+
+- **NotoSans Font**: The NotoSans font used in this project is licensed under
+  the SIL Open Font License. The full license text can be found in the
+  [`third_party/noto_sans/LICENSE`](third_party/noto_sans/LICENSE) file.
+
+- **Others**: Can be found in the
+  [`third_party/licenses.html`](third_party/licenses.html) file.
 
 ## Closed-Source Notice
 
