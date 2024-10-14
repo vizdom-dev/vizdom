@@ -1,5 +1,4 @@
-import { DirectedGraph } from "../../dist/node/vizdom_ts.js";
-// replace with `from "@vizdom/vizdom-ts-node"`
+import { DirectedGraph } from "@vizdom/vizdom-ts-node";
 
 // Create a new graph
 const graph = new DirectedGraph(
