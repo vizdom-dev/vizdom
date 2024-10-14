@@ -1,4 +1,3 @@
-import fs from "node:fs/promises";
 import {
   ArrowHead,
   Dir,
@@ -8,8 +7,13 @@ import {
   RankDir,
   Shape,
   VertexStyle,
-} from "../../dist/node/vizdom_ts.js";
-// replace with `from "@vizdom/vizdom-ts-node"`
+} from "@vizdom/vizdom-ts-node";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const graph = new DirectedGraph({
   layout: {
@@ -123,4 +127,4 @@ graph.new_edge(v3, v0, {
 const positionted = graph.layout();
 const svg = positionted.to_svg();
 
-await fs.writeFile("./graph.svg", svg.to_string());
+await fs.writeFile(path.join(__dirname, "graph.svg"), svg.to_string());

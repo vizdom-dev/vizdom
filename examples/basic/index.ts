@@ -1,6 +1,10 @@
+import { DirectedGraph } from "@vizdom/vizdom-ts-node";
 import fs from "node:fs/promises";
-import { DirectedGraph } from "../../dist/node/vizdom_ts.js";
-// replace with `from "@vizdom/vizdom-ts-node"`
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create a new graph
 const graph = new DirectedGraph();
@@ -28,4 +32,7 @@ graph.new_edge(v0, v1, {
 const positioned = graph.layout();
 
 // Finally, obtain an SVG
-await fs.writeFile("./graph.svg", positioned.to_svg().to_string());
+await fs.writeFile(
+  path.join(__dirname, "graph.svg"),
+  positioned.to_svg().to_string()
+);

@@ -1,6 +1,10 @@
+import { DirectedGraph, Util } from "@vizdom/vizdom-ts-node";
 import fs from "node:fs/promises";
-import { DirectedGraph, Util } from "../../dist/node/vizdom_ts.js";
-// replace with `from "@vizdom/vizdom-ts-node"`
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // First graph
 const g0 = new DirectedGraph();
@@ -111,5 +115,5 @@ const svg0 = positionted0.to_svg();
 const positionted1 = g1.layout();
 const svg1 = positionted1.to_svg();
 
-await fs.writeFile("./graph0.svg", svg0.to_string());
-await fs.writeFile("./graph1.svg", svg1.to_string());
+await fs.writeFile(path.join(__dirname, "graph0.svg"), svg0.to_string());
+await fs.writeFile(path.join(__dirname, "graph1.svg"), svg1.to_string());

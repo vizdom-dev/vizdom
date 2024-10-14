@@ -1,0 +1,27 @@
+{
+  "name": "vizdom-ts-examples",
+  "collaborators": [
+    "Nick Angelou <nick@vizdom.dev>"
+  ],
+  "description": "Vizdom is a declarative graph layout and rendering engine compiled from Rust to WebAssembly using `wasm-pack`. It provides an API for creating and rendering directed graphs and producing SVGs.",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vizdom-dev/vizdom-ts"
+  },
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@vizdom/vizdom-ts-node": "^0.1.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5"
+  }
+}

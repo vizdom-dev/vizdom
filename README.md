@@ -212,6 +212,69 @@ that looks like:
 
 ![this](examples/styles/graph.svg)
 
+## DOT Language Support
+
+Vizdom offers partial support for the [DOT
+language](https://graphviz.org/doc/info/lang.html), commonly used for defining
+graphs. Most styling attributes are supported; however, please note that
+undirected diagrams are currently not parsed. Additionally, while DOT files may
+specify layout engines, Vizdom will always use its own layout engine for
+positioning.
+
+The parser fully supports [cluster
+graphs](https://graphviz.org/docs/attrs/cluster/), allowing for `subgraph` IDs
+with the `cluster_` prefix or `subgraph` **statements** containing a
+`cluster=true` attribute.
+
+Unsupported styles are gracefully ignored, defaulting to safe visual options to
+ensure smooth rendering.
+
+```typescript
+import { DotParser } from "@vizdom/vizdom-ts-esm";
+// ... or CJS
+// const { DotParser } = require("@vizdom/vizdom-ts-node");
+
+// Create a new Dot Parser
+const parser = new DotParser();
+const dotGraph = parser.parse("digraph { a -> b }");
+const directedGraph = dotGraph.to_directed();
+const positioned = directedGraph.layout();
+
+// Once positioned, the graph can be exported as SVG or JSON.
+await fs.writeFile("./graph.svg", positioned.to_svg().to_string());
+const jsonObj = positioned.to_json().to_obj();
+console.log(
+  util.inspect(jsonObj, { showHidden: false, depth: null, colors: true })
+);
+```
+
+Check out the [dot example](examples/dot/index.ts), which produces a graph that
+looks like:
+
+![this](examples/dot/graph.svg)
+
+You may also sync the parsed DOT to your Vizdom account by specifying the options like the following:
+
+```typescript
+// ...
+const parser = new DotParser();
+const dotGraph = parser.parse("digraph { a -> b }");
+const directedGraph = dotGraph.to_directed({
+  client_id: process.env.VIZDOM_CLIENT_ID || "",
+  client_secret: process.env.VIZDOM_CLIENT_SECRET || "",
+  graph_id: process.env.VIZDOM_GRAPH_ID || "",
+});
+// Sync complete!
+```
+
+To optimize performance, the `to_directed()` method is instrumented for syncing
+rather than the parser itself. This allows the parser to be reused across
+multiple DOT files ensuring efficient parsing operations.
+
+Once synced to Vizdom, there's no need to manually apply layout (`layout()`) or
+rendering (`to_svg()`, `to_json()`) methods. These processes are automatically
+handled in the browser when viewing your graph.
+
 ## 📈 Diff Viewer 📉
 
 You can visually compare two graphs with Vizdom. Ensure that the `id` attributes

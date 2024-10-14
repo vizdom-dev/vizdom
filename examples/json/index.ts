@@ -1,7 +1,11 @@
+import { DirectedGraph } from "@vizdom/vizdom-ts-node";
 import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import util from "node:util";
-import { DirectedGraph } from "../../dist/node/vizdom_ts.js";
-// replace with `from "@vizdom/vizdom-ts-node"`
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create a new graph. We're overriding several default spacing attributes just
 // for easy comparison of the JSON output. In most cases, overriding the margin
@@ -84,4 +88,4 @@ console.log(
 // ...Or obtain a json string
 //
 // NOTE: You can make it compact json string using `json.to_string()`
-await fs.writeFile("./graph.json", json.to_string_pretty());
+await fs.writeFile(path.join(__dirname, "graph.json"), json.to_string_pretty());
