@@ -9,27 +9,23 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize a new DOT parser instance
-const parser = new DotParser();
-// Parse a simple directed graph, but you may also read from a file and pass in
-// the string here.
-const dotGraph = parser.parse("digraph { a -> b }");
-
-// Sync the directed graph to your Vizdom account for online access:
-//
-// The `to_directed` method takes options like client_id, client_secret, and
-// graph_id to authenticate and sync the graph online.
-const _directedGraph = dotGraph.to_directed({
+const parserSynced = new DotParser({
   client_id: process.env.VIZDOM_CLIENT_ID || "",
   client_secret: process.env.VIZDOM_CLIENT_SECRET || "",
   graph_id: process.env.VIZDOM_GRAPH_ID || "",
 });
+// Parse a simple directed graph, but you may also read from a file and pass it
+// in as a string.
+const dotGraphSynced = parserSynced.parse("digraph { a -> b }");
 // Sync complete!
 //
-// You can now view the graph in your Vizdom account. You can skip the steps
-// below if online sync is sufficient.
+// You can now view the graph in your Vizdom account. You can still render
+// locally if you wish, but you can skip the steps below if online sync is
+// sufficient.
 
-// For offline usage (without syncing), omit the options above: This will
-// convert the graph to a directed graph without any online syncing.
+// For offline usage (without syncing), omit the options when constructing the parser.
+const parser = new DotParser();
+const dotGraph = parser.parse("digraph { a -> b }");
 const directedGraph = dotGraph.to_directed();
 const positioned = directedGraph.layout(); // Automatically generate a layout for the graph
 

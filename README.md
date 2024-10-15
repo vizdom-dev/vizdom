@@ -253,27 +253,23 @@ looks like:
 
 ![this](examples/dot/graph.svg)
 
-You may also sync the parsed DOT to your Vizdom account by specifying the options like the following:
+You may also sync a parsed DOT to your Vizdom account by specifying the options like the following:
 
 ```typescript
 // ...
-const parser = new DotParser();
-const dotGraph = parser.parse("digraph { a -> b }");
-const directedGraph = dotGraph.to_directed({
+const parser = new DotParser({
   client_id: process.env.VIZDOM_CLIENT_ID || "",
   client_secret: process.env.VIZDOM_CLIENT_SECRET || "",
   graph_id: process.env.VIZDOM_GRAPH_ID || "",
 });
+const dotGraph = parser.parse("digraph { a -> b }");
 // Sync complete!
 ```
 
-To optimize performance, the `to_directed()` method is instrumented for syncing
-rather than the parser itself. This allows the parser to be reused across
-multiple DOT files ensuring efficient parsing operations.
-
-Once synced to Vizdom, there's no need to manually apply layout (`layout()`) or
-rendering (`to_svg()`, `to_json()`) methods. These processes are automatically
-handled in the browser when viewing your graph.
+Once synced to Vizdom, there's no need to manually convert the parsed AST to a
+directed graph (`to_directed()`), apply layout (`layout()`) nor rendering
+(`to_svg()`, `to_json()`) methods. These processes are automatically handled in
+the browser when viewing your graph.
 
 ## 📈 Diff Viewer 📉
 
