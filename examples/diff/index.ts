@@ -115,5 +115,11 @@ const svg0 = positionted0.to_svg();
 const positionted1 = g1.layout();
 const svg1 = positionted1.to_svg();
 
-await fs.writeFile(path.join(__dirname, "graph0.svg"), svg0.to_string());
-await fs.writeFile(path.join(__dirname, "graph1.svg"), svg1.to_string());
+await fs.writeFile(
+  path.join(__dirname, "graph0.svg"),
+  svg0.with_width_and_height().to_string()
+);
+await fs.writeFile(
+  path.join(__dirname, "graph1.svg"),
+  svg1.with_width_and_height().to_string()
+);

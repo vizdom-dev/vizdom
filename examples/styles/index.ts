@@ -127,4 +127,7 @@ graph.new_edge(v3, v0, {
 const positionted = graph.layout();
 const svg = positionted.to_svg();
 
-await fs.writeFile(path.join(__dirname, "graph.svg"), svg.to_string());
+await fs.writeFile(
+  path.join(__dirname, "graph.svg"),
+  svg.with_width_and_height().to_string()
+);

@@ -32,7 +32,7 @@ const positioned = directedGraph.layout(); // Automatically generate a layout fo
 // Export the graph to an SVG file:
 await fs.writeFile(
   path.join(__dirname, "graph.svg"),
-  positioned.to_svg().to_string()
+  positioned.to_svg().with_width_and_height().to_string()
 );
 
 // Alternatively, you can export the graph in JSON format:
