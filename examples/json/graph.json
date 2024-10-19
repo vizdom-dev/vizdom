@@ -1,15 +1,16 @@
 {
   "graph": {
-    "id": "",
-    "label": "",
+    "id": null,
+    "label": null,
     "rank_dir": 0,
     "width": 10.0,
     "height": 30.0
   },
   "nodes": [
     {
+      "unique_id": "0",
       "id": "v0",
-      "label": "",
+      "label": null,
       "shape": 0,
       "pen_width": 1.0,
       "font_size": 16.0,
@@ -23,8 +24,9 @@
       "height": 10.0
     },
     {
+      "unique_id": "1",
       "id": "v1",
-      "label": "",
+      "label": null,
       "shape": 0,
       "pen_width": 1.0,
       "font_size": 16.0,
@@ -40,8 +42,11 @@
   ],
   "edges": [
     {
+      "unique_id": "0",
       "id": "e1",
-      "label": "",
+      "label": null,
+      "source": "0",
+      "target": "1",
       "shape": 6,
       "pen_width": 1.0,
       "font_size": 16.0,
