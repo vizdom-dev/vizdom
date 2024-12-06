@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vizdom-dev/vizdom-ts"
+    "url": "https://github.com/vizdom-dev/vizdom"
   },
   "directories": {
     "example": "examples"
@@ -18,9 +18,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@vizdom/vizdom-ts-node": "^0.1.17"
+    "@vizdom/vizdom-ts-node": "^0.1.18"
   },
   "devDependencies": {
-    "@types/node": "^22.7.5"
+    "@types/node": "^22.10.1"
   }
 }
