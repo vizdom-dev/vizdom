@@ -22,27 +22,48 @@ directed graphs and producing SVGs.
 
 Vizdom comes in several distributions:
 
-- `esm` (Modern)
+- `esm` (Modules)
 - `node` (CJS)
 - `web` (Browser)
 
 Simply select a distribution and install using your favorite package manager
 following the saming convention `@vizdom/vizdom-ts-<dist>`.
 
-```sh
+```bash
+# If using Node or Bun
+npm install @vizdom/vizdom-ts-node
+
+# If using a bundler such as Vite
 npm install @vizdom/vizdom-ts-esm
-pnpm install @vizdom/vizdom-ts-esm
-yarn install @vizdom/vizdom-ts-esm
-bun install @vizdom/vizdom-ts-esm
+
+# If using Angular (without SSR)
+npm install @vizdom/vizdom-ts-web
 ```
+
+## Vite
+
+Vizdom supprots Vite using the `esm` distribution. You can use either CSR or
+SSR. Vitest + Asto will need a bit of a hack to get the testing suite to use the
+`node` bundle. See [this issue](https://github.com/vizdom-dev/vizdom/issues/9)
+for a minimal configuration.
+
+## Angular
+
+Vizdom supports Angular, but unfortunatly you cannot customize the Vite
+configuration. As a result, the only way I know how to get it running is to use
+the `web` distribution which doesn't support SSR. See [this
+issue](https://github.com/vizdom-dev/vizdom/issues/9) for a minimal
+configuration.
 
 ## 🚴 Usage
 
 In the most basic configuration, all you need is to provide labels for nodes and
 edges.
 
+Write this into a `index.ts` file:
+
 ```typescript
-import { DirectedGraph } from "@vizdom/vizdom-ts-esm";
+import { DirectedGraph } from "@vizdom/vizdom-ts-node";
 // ... or CJS
 // const { DirectedGraph } = require("@vizdom/vizdom-ts-node");
 
@@ -75,8 +96,15 @@ const positioned = graph.layout();
 await fs.writeFile("./graph.svg", positioned.to_svg().to_string());
 ```
 
-Check out the [basic example](examples/basic/index.ts), which produces a graph
-that looks like:
+Then, run the file:
+
+```sh
+npx tsx index.ts
+# Or with Bun
+bun run index.ts
+```
+
+Which will generate a graph that looks like:
 
 ![this](examples/basic/graph.svg)
 
@@ -230,7 +258,7 @@ Unsupported styles are gracefully ignored, defaulting to safe visual options to
 ensure smooth rendering.
 
 ```typescript
-import { DotParser } from "@vizdom/vizdom-ts-esm";
+import { DotParser } from "@vizdom/vizdom-ts-node";
 // ... or CJS
 // const { DotParser } = require("@vizdom/vizdom-ts-node");
 
@@ -253,7 +281,8 @@ looks like:
 
 ![this](examples/dot/graph.svg)
 
-You may also sync a parsed DOT to your Vizdom account by specifying the options like the following:
+You may also sync a parsed DOT to your Vizdom account by specifying the options
+like the following:
 
 ```typescript
 // ...
