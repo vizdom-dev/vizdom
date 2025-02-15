@@ -27,7 +27,7 @@ Vizdom comes in several distributions:
 - `web` (Browser)
 
 Simply select a distribution and install using your favorite package manager
-following the saming convention `@vizdom/vizdom-ts-<dist>`.
+following the naming convention `@vizdom/vizdom-ts-<dist>`.
 
 ```bash
 # If using Node or Bun
